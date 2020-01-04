@@ -23,3 +23,4 @@ def enter_account_details(driver,userid,Fname,Lname,Address1,City,Zip,Email,Conf
     driver.switch_to.window(driver.window_handles[0])
     driver.back()
     driver.back()
+    return driver

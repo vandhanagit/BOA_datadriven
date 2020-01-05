@@ -1,7 +1,9 @@
 import time
 from selenium.webdriver.support.ui import Select
-
+import Config.env
+import configparser
 def accountseclection(driver):
+
     driver.find_element_by_class_name("open-account").click()
     no_of_products=driver.find_elements_by_xpath("//div[contains(text(),'started')]")
     print("No of services available are " + str(len(no_of_products)))
@@ -19,8 +21,14 @@ def accountseclection(driver):
         driver.find_element_by_id("go-button-zip-modal").click()
     except:
         pass
+    time.sleep(7)
 
-    savings_account = input("Do you want to add a savings account(Y/N):")
+    from configparser import ConfigParser
+    config1 = ConfigParser()
+    config1.read('../Config/env/globalvairables.ini')
+    savings_account = config1['Savings']['savings_account']
+
+    #savings_account = input("Do you want to add a savings account(Y/N):")
     if savings_account.upper() == 'Y':
         # driver.find_element_by_id("rb-rewards-savings-account").click()
         driver.find_element_by_xpath("//input[@type='radio']").click()

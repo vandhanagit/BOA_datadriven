@@ -3,6 +3,8 @@ import time
 import datetime
 
 def enter_account_details(driver,userid,Fname,Lname,Address1,City,Zip,Email,Confirm_email,State,Phone,):
+    driver.switch_to.window(driver.window_handles[-1])
+    time.sleep(5)
     driver.find_element_by_xpath("//input[@id='zz_name_tb_fnm_v_1']").send_keys(Fname)
     driver.find_element_by_id("zz_name_tb_lnm_v_1").send_keys(Lname)
     driver.find_element_by_id("zz_addr_tb_line1_v_1").send_keys(Address1)
@@ -21,6 +23,7 @@ def enter_account_details(driver,userid,Fname,Lname,Address1,City,Zip,Email,Conf
     driver.save_screenshot("new account"+str(userid)+str(datetime.datetime.now())[:10]+".png")
     driver.close()
     driver.switch_to.window(driver.window_handles[0])
+    print("Result: Online account created successfully")
     driver.back()
     driver.back()
     return driver

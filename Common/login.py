@@ -1,6 +1,8 @@
 import datetime
 def login_user(driver,userid,password):
+    driver.find_element_by_name("onlineId1").clear()
     driver.find_element_by_name("onlineId1").send_keys(userid)
+    driver.find_element_by_name("passcode1").clear()
     driver.find_element_by_name("passcode1").send_keys(password)
 
     driver.find_element_by_id("saveOnlineId").click()

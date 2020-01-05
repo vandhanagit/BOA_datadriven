@@ -5,12 +5,12 @@ def process_excel(df_address_details_all,userid):
     Fname, Lname, Address1, City, State, Zip, Phone, Email, Confirm_email = None,None,None,None,None,None,None,None,None
     df_address_details = df_address_details_all.loc[df_address_details_all['User'] == userid]
     if df_address_details.empty:
-        print("We have no address details...User ID cannot be created")
+        print("Result : We have no address details...User ID cannot be created")
         return Fname,Lname,Address1,City,State,Zip,Phone,Email,Confirm_email
     else:
         #print(df_address_details)
 
-        #print(df_address_details.reset_index(drop=True,inplace=True))
+        df_address_details.reset_index(drop=True,inplace=True)
         #print(df_address_details)
         # Extracting information from excel
         Fname = df_address_details['Fname']

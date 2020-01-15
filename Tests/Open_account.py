@@ -1,3 +1,5 @@
+import HtmlTestRunner
+import unittest
 from Common.openbrowser import open_site
 from utils.ExcelParse import excel_parse
 from utils.db_connect import DB
@@ -6,7 +8,7 @@ from Common.AccountSelection import accountseclection
 from Common.enterAccountDetails import enter_account_details
 from Common.DataProcessing import process_excel
 from configparser import ConfigParser
-
+import Common.ExtentHTMLTestRunner
 #DB connection
 db=DB(10)
 db.dbConnection()
@@ -59,3 +61,7 @@ for pos, userid in df_users['User'].iteritems():
     counter=counter+1
 print("==========User Id's list completed....ending script==========")
 driver.quit()
+
+
+if __name__=='__main__':
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='report.html'))
